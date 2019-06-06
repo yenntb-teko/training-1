@@ -10,7 +10,6 @@ class ProductList extends Component {
 
 	render() {
     let data = this.props.product && this.props.product.data ? this.props.product.data : null;
-    console.log('data this.props.product: ', data);
 		return (
       <ScrollView>
       {

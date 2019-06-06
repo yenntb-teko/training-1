@@ -9,7 +9,6 @@ export class ProductItem extends Component {
 
 	render() {
 		let pd = this.props.item;
-		console.log('this.props.item', pd);
 		return (
 			<View style={styles.item} >
 				<View style={{ flex: 1 }}>
