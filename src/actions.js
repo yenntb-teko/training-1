@@ -1,20 +1,48 @@
-import { searchService } from './services';
+import { searchService } from "./services";
+import {
+  getWishlistFromStorageHelper,
+  addWishlistToStorageHelper
+} from "./helper";
 
-export function searchAction(keySearch){
+export function searchAction(keySearch) {
   return dispatch => {
     searchService(keySearch).then(
       data => {
-        dispatch(success(data));
+        dispatch(onSuccess("SEARCH", data));
       },
       error => {
-        dispatch(failure(error))
+        dispatch(onError("SEARCH", error));
       }
-    )
+    );
   };
-  function success(data){
-    return { type: 'SEARCH_SUCCESS', data };
-  }
-  function failure(error){
-    return { type: 'ERROR', error };
-  }
+}
+
+export function getWishlistFromAsyncStorage() {
+  return async dispatch => {
+    try {
+      let wishlist = await getWishlistFromStorageHelper();
+      dispatch(onSuccess("GET_WISHLIST", wishlist));
+    } catch (err) {
+      dispatch(onError("GET_WISHLIST", err));
+    }
+  };
+}
+
+export function addToWishlist(sku) {
+  return async dispatch => {
+    try {
+      let wishlist = await addWishlistToStorageHelper(sku);
+      dispatch(onSuccess("ADD_TO_WISHLIST", wishlist));
+    } catch (err) {
+      console.log("addToWishlist error", err);
+    }
+  };
+}
+
+function onSuccess(type, data) {
+  return { type: type + "_SUCCESS", data };
+}
+
+function onError(type, data) {
+  return { type: type + "_ERROR", data };
 }
