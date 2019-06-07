@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import { ProductItem } from "../_components";
 import { connect } from "react-redux";
 import { FlatList, ScrollView } from "react-native";
+import { getWishlistFromAsyncStorage } from "../actions";
 
 class ProductList extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount = async () => {
+    this.props.dispatch(getWishlistFromAsyncStorage());
+  };
 
   render() {
     let data =

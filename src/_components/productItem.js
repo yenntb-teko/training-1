@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Icon } from "react-native-elements";
 import { connect } from "react-redux";
-import { getWishlistFromAsyncStorage, addToWishlist } from "../actions";
+import { changeWishlist } from "../actions";
 import { checkExist } from "../helper";
 
 class ProductItem extends Component {
@@ -10,12 +10,8 @@ class ProductItem extends Component {
     super(props);
   }
 
-  componentDidMount = async () => {
-    this.props.dispatch(getWishlistFromAsyncStorage());
-  };
-
-  addToWishlist(sku) {
-    this.props.dispatch(addToWishlist(sku));
+  changeWishlist(sku) {
+    this.props.dispatch(changeWishlist(sku));
   }
 
   render() {
@@ -47,7 +43,7 @@ class ProductItem extends Component {
               type="font-awesome"
               color="#f4ec4b"
               size={20}
-              onPress={() => this.addToWishlist(pd.sku)}
+              onPress={() => this.changeWishlist(pd.sku)}
             />
           </View>
         </View>

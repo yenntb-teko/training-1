@@ -28,7 +28,7 @@ export function getWishlistFromAsyncStorage() {
   };
 }
 
-export function addToWishlist(sku) {
+export function changeWishlist(sku) {
   return async dispatch => {
     try {
       let wishlist = await addWishlistToStorageHelper(sku);
