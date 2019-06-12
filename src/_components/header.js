@@ -3,7 +3,7 @@ import { StyleSheet, View, TextInput } from "react-native";
 import { searchAction } from "../actions";
 import { connect } from "react-redux";
 
-class Header extends Component {
+export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = { keySearch: "" };

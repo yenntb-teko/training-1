@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#dc2329",
+      "height": 120,
+      "justifyContent": "center",
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="Nhập tên, mã sản phẩm"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "borderRadius": 5,
+        "textAlign": "center",
+        "width": 250,
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+</View>
+`;

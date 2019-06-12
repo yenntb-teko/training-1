@@ -6,7 +6,7 @@ import {
 
 export function searchAction(keySearch) {
   return dispatch => {
-    searchService(keySearch).then(
+    return searchService(keySearch).then(
       data => {
         dispatch(onSuccess("SEARCH", data));
       },
