@@ -16,7 +16,7 @@ Game.prototype.collateFrameScores = function() {
   for (let i = 0; i < this.frames.length; i++) {
     this.frames[i].calculateTotalScore();
     scoreFrame = this.frames[i].totalScore;
-    if (scoreFrame !== null) {
+    if (scoreFrame) {
       this.frameScores.push(scoreFrame);
     } else {
       this.frameScores.push(0);
@@ -29,6 +29,6 @@ Game.prototype.calculateGameScore = function() {
   this.collateFrameScores();
   this.gameScore = this.frameScores.reduce((sum, score) => {
     return sum + score;
-  });
+  }, 0);
   return this.gameScore;
 };
