@@ -3,6 +3,7 @@ import { Game } from "../game";
 var game;
 beforeEach(() => {
   game = new Game();
+  game.initialNewArray();
 });
 
 it("Gutter game scores zero - When you roll all misses, you get a total score of zero.", () => {

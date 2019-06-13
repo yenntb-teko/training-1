@@ -1,34 +1,30 @@
 import { Frame } from "./frame";
 import { FinalFrame } from "./finalFrame";
 
-export function Game() {
-  this.frames = [];
-  for (let i = 1; i <= 9; i++) {
-    this.frames.push(new Frame(this));
-  }
-  this.frames[9] = new FinalFrame(this);
-  this.frameScores = [];
-  this.gameScore = null;
-}
+export class Game {
+  frames = [];
+  frameScores = [];
+  gameScore = null;
 
-Game.prototype.collateFrameScores = function() {
-  let scoreFrame;
-  for (let i = 0; i < this.frames.length; i++) {
-    this.frames[i].calculateTotalScore();
-    scoreFrame = this.frames[i].totalScore;
-    if (scoreFrame) {
-      this.frameScores.push(scoreFrame);
-    } else {
-      this.frameScores.push(0);
+  initialNewArray = () => {
+    for (let i = 1; i <= 9; i++) {
+      this.frames.push(new Frame(this));
     }
-  }
-  console.log("game.frameScores: ", this.frameScores);
-};
+    this.frames[9] = new FinalFrame(this);
+  };
 
-Game.prototype.calculateGameScore = function() {
-  this.collateFrameScores();
-  this.gameScore = this.frameScores.reduce((sum, score) => {
-    return sum + score;
-  }, 0);
-  return this.gameScore;
-};
+  collateFrameScores = () => {
+    for (let i = 0; i < this.frames.length; i++) {
+      this.frames[i].calculateTotalScore();
+      this.frameScores.push(this.frames[i].totalScore || 0);
+    }
+  };
+
+  calculateGameScore = () => {
+    this.collateFrameScores();
+    this.gameScore = this.frameScores.reduce((sum, score) => {
+      return sum + score;
+    }, 0);
+    return this.gameScore;
+  };
+}
