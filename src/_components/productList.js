@@ -3,6 +3,8 @@ import { ProductItem } from "../_components";
 import { connect } from "react-redux";
 import { FlatList, ScrollView } from "react-native";
 import { getWishlistFromAsyncStorage } from "../actions";
+import { getStockQuantity, getWishlist } from "../firebase";
+import Constants from "expo-constants";
 
 class ProductList extends Component {
   constructor(props) {
@@ -10,7 +12,9 @@ class ProductList extends Component {
   }
 
   componentDidMount = async () => {
-    this.props.dispatch(getWishlistFromAsyncStorage());
+    //this.props.dispatch(getWishlistFromAsyncStorage());
+    this.props.dispatch(getWishlist(Constants.deviceName));
+    this.props.dispatch(getStockQuantity());
   };
 
   render() {
