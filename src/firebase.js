@@ -49,3 +49,10 @@ export function getWishlist(device) {
       });
   };
 }
+
+export function offStocks() {
+  firebase
+    .database()
+    .ref(`stocks`)
+    .off();
+}

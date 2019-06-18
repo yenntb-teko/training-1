@@ -12,12 +12,14 @@ class ProductList extends Component {
   }
 
   componentDidMount = async () => {
+    console.log("componentDidMount: ");
     //this.props.dispatch(getWishlistFromAsyncStorage());
     this.props.dispatch(getWishlist(Constants.deviceName));
     this.props.dispatch(getStockQuantity());
   };
 
   render() {
+    console.log("ProductList: ", this.props);
     let data =
       this.props.product && this.props.product.data
         ? this.props.product.data
